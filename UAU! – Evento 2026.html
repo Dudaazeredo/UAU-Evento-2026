@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>UAU! – Evento 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Titan+One&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F8F9F6;--ink:#3A3F3A;--mute:#6B736B;--card:#fff;--line:#E3E8DE;--lime:#8FD94B;--lime2:#74C228;--tint:#EEF8D6;--link:#5E9E1C;--on:#1E3A0A;--h1:#DCEFA0;--h2:#F8F9F6;--st:#3E5B2A;--sh:#6E9A3C;--bad:#D14343;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10150D;--ink:#E4EBDD;--mute:#9AA693;--card:#182013;--line:#2B3724;--tint:#25331A;--link:#A6E566;--h1:#26361A;--h2:#10150D;--st:#0B1007;--sh:#4A6B25}}
+:root[data-theme="dark"]{--bg:#10150D;--ink:#E4EBDD;--mute:#9AA693;--card:#182013;--line:#2B3724;--tint:#25331A;--link:#A6E566;--h1:#26361A;--h2:#10150D;--st:#0B1007;--sh:#4A6B25}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 Manrope,system-ui,sans-serif}
+button,input,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--lime2);outline-offset:2px}
+.bar0{height:8px;background:linear-gradient(90deg,#4E8F1E,#8FD94B)}
+.hero{background:linear-gradient(var(--h1),var(--h2));text-align:center;padding:48px 20px 56px}
+.logo{font:400 clamp(80px,18vw,128px)/1 'Titan One',Manrope,sans-serif;color:#fff;-webkit-text-stroke:7px var(--st);paint-order:stroke fill;text-shadow:5px 6px 0 var(--sh);margin:0 0 24px;letter-spacing:-.02em}
+.pills{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:24px}
+.pill{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:14px;font-weight:600}
+.hero p{max-width:560px;margin:0 auto 14px;color:var(--mute)}
+.btn{display:inline-block;background:linear-gradient(var(--lime),var(--lime2));color:var(--on);border:0;border-radius:10px;padding:12px 28px;font-weight:800;cursor:pointer;text-decoration:none}
+.btn.full{width:100%;padding:14px}
+.btn.ghost{background:none;border:1px solid var(--lime2);color:var(--link);padding:4px 14px;border-radius:999px;font-weight:600}
+.sec{max-width:860px;margin:0 auto;padding:44px 20px 0}
+h2.t{font-size:30px;line-height:1.2;margin:0 0 8px;font-weight:800}
+.center{text-align:center}.sub{color:var(--mute);margin:0 auto 28px;max-width:560px}
+.steps{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+@media(max-width:640px){.steps{grid-template-columns:1fr}}
+.step .hd{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.num{width:24px;height:24px;border-radius:50%;background:var(--lime2);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:800}
+.tag{background:var(--tint);border-radius:999px;padding:2px 12px;font-size:13px;font-weight:600}
+.step h3{margin:0 0 4px;font-size:16px}.step p{margin:0;font-size:14px;color:var(--mute)}
+.note-g{background:var(--tint);border:1px solid var(--lime);border-radius:8px;padding:6px 12px;font-size:13px;margin-top:10px}
+/* tabs */
+.mtabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 18px}
+.mtabs button{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px 14px;font-weight:600;font-size:14px;cursor:pointer}
+.mtabs button[aria-selected=true]{background:linear-gradient(var(--lime),var(--lime2));border-color:transparent;color:var(--on)}
+.live-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--bad);margin-right:6px;animation:p 1.4s infinite}
+@keyframes p{50%{opacity:.25}}
+@media(prefers-reduced-motion:reduce){.live-dot{animation:none}}
+.panel[hidden]{display:none}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin-bottom:16px}
+.card h3{margin:0 0 10px;font-size:17px}
+.card p,.card li{font-size:15px;margin:0 0 8px}.card ul{margin:0;padding-left:20px}
+.card a{color:var(--link);font-weight:600}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:640px){.cols{grid-template-columns:1fr}}
+.card.tint{background:var(--tint);border-color:var(--lime)}
+/* online */
+.video{aspect-ratio:16/9;background:#12200A;border-radius:10px;display:grid;place-items:center;text-align:center;padding:20px;color:#BFE39A}
+.video b{display:block;color:#fff;font-size:18px;margin-bottom:4px}
+.seg{display:flex;gap:6px;overflow-x:auto;margin-bottom:16px}
+.seg button{background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 16px;font-weight:600;font-size:14px;cursor:pointer;white-space:nowrap}
+.seg button[aria-selected=true]{background:var(--tint);border-color:var(--lime2);color:var(--link)}
+.opt{display:block;width:100%;text-align:left;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:11px 14px;margin-bottom:8px;cursor:pointer}
+.opt:hover:not([disabled]){border-color:var(--lime2)}
+.opt[disabled]{cursor:default}
+.opt.ok{border-color:var(--lime2);background:var(--tint)}.opt.no{border-color:var(--bad)}
+textarea,input[type=email]{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:12px;margin-bottom:10px}
+.note{color:var(--mute);font-size:13px;margin:8px 0 0}
+.q{border-top:1px solid var(--line);padding:10px 0;font-size:15px}
+.bar{margin-bottom:14px}.bar .t{display:flex;justify-content:space-between;font-size:15px;margin-bottom:4px}
+.bar .tr{height:12px;background:var(--bg);border-radius:6px;overflow:hidden;border:1px solid var(--line)}
+.bar .f{height:100%;background:linear-gradient(90deg,var(--lime),var(--lime2));transition:width .5s}
+.rank{list-style:none;margin:0;padding:0}
+.rank li{display:flex;justify-content:space-between;padding:9px 0;border-top:1px solid var(--line)}
+.rank li.me{font-weight:800;color:var(--link)}
+/* form */
+.form{max-width:560px;margin:0 auto;padding:56px 20px 24px}
+.prog{display:flex;gap:6px;margin:10px 0 24px}.prog i{flex:1;height:4px;border-radius:2px;background:var(--line)}.prog i.on{background:var(--lime2)}
+label.l{display:block;font-size:14px;font-weight:600;margin-bottom:6px}
+.radio{display:flex;align-items:center;gap:8px;margin:4px 0;font-size:15px}
+.fbtns{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+.fbtns label{cursor:pointer}.fbtns input[type=file]{position:absolute;opacity:0;width:1px;height:1px}
+.fbtns label:focus-within{outline:3px solid var(--lime2);outline-offset:2px}
+input[type=text]{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:12px}
+#shot{display:block;width:100%;max-width:420px;border-radius:10px;border:1px solid var(--line);margin:14px auto 0}
+.rowb{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}.rowx{display:flex;justify-content:space-between;gap:8px;align-items:center;border-top:1px solid var(--line);padding:8px 0;font-size:14px;flex-wrap:wrap}
+.sm{padding:3px 10px!important;font-size:13px}.btn.red{color:var(--bad);border-color:var(--bad)}
+select,input[type=number]{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:11px;margin-bottom:10px}
+.mural{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}.mural figure{margin:0}.mural img{width:100%;border-radius:8px;display:block}.mural figcaption{font-size:12px;color:var(--mute);margin-top:4px}
+footer{text-align:center;color:var(--mute);font-size:12px;padding:16px 20px 32px}
+</style>
+</head>
+<body>
+<div class="bar0"></div>
+
+<section class="hero">
+  <h1 class="logo">UAU!</h1>
+  <div class="pills">
+    <span class="pill">📅 17 de novembro (terça-feira)</span>
+    <span class="pill">🕗 8h30 às 20h</span>
+    <span class="pill">📍 Casa da Glória</span>
+  </div>
+  <p>O evento UAU é o nosso principal encontro do ano, desenhado para fortalecer nossa cultura, garantir o alinhamento estratégico e de negócios de toda a operação.</p>
+  <p>Prepare-se para momentos de troca, celebração e muito aprendizado. 🎉</p>
+  <a class="btn" href="#form">Inscreva-se</a>
+</section>
+
+<section class="sec">
+  <h2 class="t center">Como funcionará esta edição</h2>
+  <p class="sub center">Este ano, o evento UAU se une ao Conecta Líderes! Preparamos um formato especial, dividido em dois momentos, para conectar toda a nossa operação.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="hd"><span class="num">1</span><span class="tag">💻 16/11 · 15h às 18h</span></div>
+      <h3>Transmissão 100% Online</h3>
+      <p>Para todo o time, garantindo que todo mundo fique na mesma página, com enquetes e interações ao vivo.</p>
+      <p style="margin-top:8px"><button class="btn ghost" id="goOnline">Ir para a aba Online</button></p>
+    </div>
+    <div class="step">
+      <div class="hd"><span class="num">2</span><span class="tag">🥂 17/11 · 8h30 às 20h</span></div>
+      <h3>Encontro Presencial</h3>
+      <p>Exclusivo para lideranças selecionadas, para aprofundar os desafios de perto.</p>
+      <div class="note-g">✅ É para este encontro que você está se inscrevendo.</div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="info">
+  <h2 class="t">Informações do evento</h2>
+  <div class="mtabs" role="tablist" id="mtabs">
+    <button role="tab" aria-selected="true" data-m="online"><span class="live-dot"></span>Online</button>
+    <button role="tab" aria-selected="false" data-m="prog">📅 Programação</button>
+    <button role="tab" aria-selected="false" data-m="chegar">🚚 Como Chegar</button>
+    <button role="tab" aria-selected="false" data-m="guia">📖 Guia do Participante</button>
+    <button role="tab" aria-selected="false" data-m="foto">📸 Foto da lojinha</button>
+    <button role="tab" aria-selected="false" data-m="admin" id="tabAdmin" hidden>⚙️ Admin</button>
+  </div>
+
+  <div class="panel" id="p-online">
+    <div class="card">
+      <h3>📺 Transmissão ao vivo · 16/11, 15h às 18h</h3>
+      <div class="video"><div><b>Vídeo da transmissão</b>O player do YouTube, Vimeo ou Teams entra aqui.</div></div>
+    </div>
+    <div class="card">
+      <h3>💬 Interaja</h3>
+      <div class="seg" role="tablist" id="seg">
+        <button role="tab" aria-selected="true" data-t="poll">Enquete</button>
+        <button role="tab" aria-selected="false" data-t="ask">Pergunta</button>
+        <button role="tab" aria-selected="false" data-t="vote">Votação</button>
+        <button role="tab" aria-selected="false" data-t="quiz">Quiz</button>
+      </div>
+      <p class="note" id="banner" role="status"></p><div id="pane"></div>
+    </div>
+    <div class="card tint">
+      <h3>📊 Resultados</h3>
+      <div id="results"></div>
+    </div>
+  </div>
+
+  <div class="panel" id="p-prog" hidden>
+    <div class="card"><h3>Programação</h3></div>
+    <div class="card"><p><b>📍 Local</b></p><p>O evento acontecerá na <b>Casa da Glória</b>.</p></div>
+    <div class="card"><p><b style="color:var(--link)">📅 17 de novembro (terça-feira)</b></p>
+      <ul><li><b>8h30 às 9h00:</b> Credenciamento e Welcome Coffee</li><li><b>9h00 às 18h00:</b> Conteúdo e Programação</li><li><b>18h00 às 20h00:</b> Encerramento e Happy Hour</li></ul></div>
+  </div>
+
+  <div class="panel" id="p-chegar" hidden>
+    <div class="card"><h3>Como Chegar</h3><p>🚇 O local do evento está a 200 metros da saída do metrô da Glória.</p></div>
+    <div class="card"><p><b>✈️ Passagem aérea e/ou rodoviária</b></p><p>Se você não reside no Rio de Janeiro ou municípios próximos, faça a reserva na Voll, nossa agência de viagens, até <b>23/10 (sexta-feira)</b>.</p></div>
+    <div class="card"><p><b>🚗 Uber/99 Corporativo</b></p><p>Não é permitido utilizar Uber/99 Corporativo para o deslocamento de ida e volta ao evento, exceto para quem é viajante.</p></div>
+    <div class="card"><p><b>🅿️ Estacionamento</b></p><p>O local do evento não possui estacionamento próprio. Não serão aceitos pedidos de reembolso referentes a esse deslocamento.</p></div>
+    <div class="card"><p><b>🍹 Happy Hour</b></p><p>O evento UAU contará com um Happy Hour ao final da programação. Se for consumir bebida alcoólica, não dirija.</p></div>
+  </div>
+
+  <div class="panel" id="p-guia" hidden>
+    <div class="card tint"><p style="margin:0">Reunimos aqui tudo o que você precisa saber para aproveitar ao máximo o evento UAU no dia 17/11, na Casa da Glória! 🎉</p></div>
+    <div class="cols">
+      <div class="card"><p><b>🍽️ Alimentação</b></p><p>As refeições serão servidas durante a programação do evento, das 8h30 às 20h.</p><p class="note">Informe sua restrição alimentar no formulário de inscrição.</p></div>
+      <div class="card"><p><b>🎒 O que levar</b></p><ul><li>Medicamentos de uso contínuo, se necessário</li><li>Disposição para um dia cheio de boas surpresas! 🎉</li></ul></div>
+      <div class="card"><p><b>👔 Dress Code</b></p><p>Escolha uma roupa confortável, considerando que o ambiente pode ser refrigerado.</p></div>
+      <div class="card"><p><b>🤝 Comportamento &amp; Cultura</b></p><p>Venha com a cabeça de dono(a), pronto(a) para trocar experiências e fortalecer relações.</p></div>
+    </div>
+    <div class="card tint"><p><b>✉️ Contatos Úteis</b></p><p style="margin:0">Ficou com alguma dúvida? Entre em contato com o time de eventos: <a href="mailto:eventos@stone.com.br">eventos@stone.com.br</a></p></div>
+  </div>
+
+  <div class="panel" id="p-foto" hidden>
+    <div class="card">
+      <h3>📸 Foto com o seu item da lojinha</h3>
+      <p>Comprou algo na lojinha do UAU? Tire uma foto com o seu item, receba a moldura do evento e publique no mural.</p>
+      <label class="l" for="nm">Seu nome (opcional)</label>
+      <input type="text" id="nm" maxlength="30" placeholder="Como quer aparecer na foto">
+      <div class="fbtns">
+        <label class="btn">📷 Tirar foto<input type="file" accept="image/*" capture="user" id="cam"></label>
+        <label class="btn ghost" style="padding:12px 22px">🖼️ Escolher da galeria<input type="file" accept="image/*" id="gal"></label>
+      </div>
+      <p class="note" id="fnote" role="status">No celular, o botão abre a câmera. No computador, escolha uma imagem.</p>
+      <img id="shot" alt="Sua foto com a moldura do UAU!" hidden>
+      <div class="fbtns"><button class="btn" id="pub" hidden>Publicar no mural</button></div>
+    </div>
+    <div class="card"><h3>🖼️ Mural do UAU!</h3><div class="mural" id="mural"></div></div>
+  </div>
+
+  <div class="panel" id="p-admin" hidden>
+    <div class="card"><h3>⚙️ Enquetes e votações</h3><div id="adE"></div>
+      <select id="eT" aria-label="Tipo"><option value="enquete">Enquete</option><option value="votacao">Votação</option></select>
+      <input type="text" id="eP" placeholder="Pergunta"><textarea id="eO" rows="3" placeholder="Uma opção por linha"></textarea>
+      <button class="btn sm" id="eS">Criar</button> <button class="btn ghost sm" id="eC" hidden>Cancelar</button></div>
+    <div class="card"><h3>🎯 Perguntas do quiz</h3><div id="adQ"></div>
+      <input type="text" id="zP" placeholder="Pergunta"><textarea id="zO" rows="3" placeholder="Uma opção por linha"></textarea>
+      <input type="number" id="zA" min="1" placeholder="Nº da opção correta">
+      <button class="btn sm" id="zS">Criar</button> <button class="btn ghost sm" id="zC" hidden>Cancelar</button></div>
+    <div class="card"><h3>📝 Inscrições</h3><div id="adI"></div></div>
+    <p class="note" id="amsg" role="alert"></p>
+  </div>
+  </section>
+
+<section class="form" id="form">
+  <h2 class="t center">Formulário de Inscrição</h2>
+  <div class="prog"><i class="on"></i><i></i><i></i></div>
+  <div id="formBody"></div>
+</section>
+<footer>© 2026 Evento UAU</footer>
+
+<script>
+var $=function(s){return document.querySelector(s)};
+function esc(s){var d=document.createElement("div");d.textContent=s==null?"":s;return d.innerHTML}
+var db,usr,assets,uid=null,adm=false,myName="",names={},asked={},E=[],Q=[],V={},R={},P={},A={},F={},I={};
+var tab="poll",qshow=null,editQ=null,editE=null,editZ=null,lastC=null,editF=false,lastForm="",pend=false;
+var rid=()=>Math.random().toString(36).slice(2,9)+Date.now().toString(36);
+var nm=id=>id===uid?"Você":(names[id]||"Participante");
+function toast(m){$("#banner").textContent=m;$("#amsg").textContent=m}
+function w(pr){return pr.catch(e=>toast("Não foi possível salvar: "+(e&&e.message||e)))}
+function loadNames(ids){var m=[];ids.forEach(i=>{if(i&&!asked[i]){asked[i]=1;m.push(i)}});
+ if(!m.length||!usr||!usr.profiles)return;
+ usr.profiles(m).then(ps=>{m.forEach(i=>{if(ps[i]&&ps[i].name)names[i]=ps[i].name});paintAll()}).catch(()=>{})}
+var score=r=>Q.filter(q=>r&&r.resp&&r.resp[q.id]===q.a).length;
+
+function mainTab(m){
+ [].forEach.call($("#mtabs").children,b=>b.setAttribute("aria-selected",b.dataset.m===m));
+ ["online","prog","chegar","guia","foto","admin"].forEach(k=>{$("#p-"+k).hidden=k!==m});
+}
+$("#mtabs").onclick=e=>{var b=e.target.closest("button");if(b)mainTab(b.dataset.m)};
+$("#goOnline").onclick=()=>{mainTab("online");$("#info").scrollIntoView()};
+$("#seg").onclick=e=>{var b=e.target.closest("button");if(!b)return;tab=b.dataset.t;
+ [].forEach.call($("#seg").children,x=>x.setAttribute("aria-selected",x===b));paintAll()};
+
+function paintPane(){
+ var p=$("#pane");
+ if(tab==="poll"||tab==="vote"){
+  var tp=tab==="poll"?"enquete":"votacao",l=E.filter(e=>e.tipo===tp),my=(V[uid]||{}).r||{};
+  p.innerHTML=l.length?l.map(e=>'<p><b>'+esc(e.pergunta)+'</b></p>'+(e.opcoes||[]).map((o,i)=>'<button class="opt'+(my[e.id]===i?' ok':'')+'" '+(e.aberta&&uid?'':'disabled')+' data-v="'+e.id+'" data-i="'+i+'">'+esc(o)+'</button>').join("")+(e.aberta?'':'<p class="note">Encerrada.</p>')).join("")+'<p class="note">Você pode mudar seu voto enquanto estiver aberta.</p>':'<p class="note">Nenhuma '+(tp==="enquete"?"enquete":"votação")+' no momento.</p>';
+ }else if(tab==="ask"){
+  if(!$("#qt"))p.innerHTML='<p><b>Envie sua pergunta ao palestrante</b></p><textarea id="qt" rows="3" maxlength="300" placeholder="Escreva sua pergunta"></textarea><button class="btn" id="send"></button> <button class="btn ghost sm" id="cq" hidden>Cancelar edição</button><p class="note" id="msg" role="alert"></p><div id="alist"></div>';
+  $("#send").textContent=editQ?"Salvar alteração":"Enviar pergunta";$("#cq").hidden=!editQ;
+  var all=[],ap={},mine=(A[uid]||{}).ids||[];
+  Object.keys(P).forEach(u=>(P[u].itens||[]).forEach(it=>all.push({u:u,it:it})));
+  Object.keys(A).forEach(u=>(A[u].ids||[]).forEach(i=>ap[i]=(ap[i]||0)+1));
+  all.sort((a,b)=>(ap[b.it.id]||0)-(ap[a.it.id]||0)||b.it.ts-a.it.ts);
+  $("#alist").innerHTML=all.map(x=>{var it=x.it,own=x.u===uid;
+   return '<div class="q">'+(it.resp?'✅ ':'')+esc(it.t)+'<div class="note" style="margin:2px 0 0">'+esc(nm(x.u))+'</div><div class="rowb"><button class="btn ghost sm" data-up="'+it.id+'">'+(mine.indexOf(it.id)>-1?'Apoiado':'Apoiar')+' · '+(ap[it.id]||0)+'</button>'+(own?'<button class="btn ghost sm" data-eq="'+it.id+'">Editar</button>':'')+((own||adm)?'<button class="btn ghost sm red" data-dq="'+x.u+'|'+it.id+'">Excluir</button>':'')+(adm&&!it.resp?'<button class="btn ghost sm" data-rq="'+x.u+'|'+it.id+'">Respondida</button>':'')+'</div></div>'}).join("")||'<p class="note">Nenhuma pergunta ainda.</p>';
+  loadNames(all.map(x=>x.u));
+ }else{
+  var my=R[uid]||{resp:{}},c=qshow?Q.find(q=>q.id===qshow):Q.find(q=>my.resp[q.id]===undefined);
+  if(!Q.length)p.innerHTML='<p class="note">O quiz ainda não foi publicado.</p>';
+  else if(!c)p.innerHTML='<p><b>Quiz concluído</b></p><p>Você acertou '+score(my)+' de '+Q.length+'. Veja o ranking abaixo.</p><button class="btn ghost sm" id="redo">Refazer quiz</button>';
+  else{var a=my.resp[c.id];
+   p.innerHTML='<p class="note" style="margin:0 0 6px">Pergunta '+(Q.indexOf(c)+1)+' de '+Q.length+'</p><p><b>'+esc(c.pergunta)+'</b></p>'+(c.opcoes||[]).map((t,i)=>'<button class="opt'+(a===undefined?'':(i===c.a?' ok':(i===a?' no':'')))+'" '+(a!==undefined||!uid?'disabled':'')+' data-qa="'+c.id+'" data-i="'+i+'">'+esc(t)+'</button>').join("")+(a!==undefined?'<button class="btn" id="nq">Próxima</button>':'');}
+ }
+}
+function paintResults(){
+ var h=E.map(e=>{var c=(e.opcoes||[]).map(()=>0),n=0;
+  Object.keys(V).forEach(u=>{var i=((V[u]||{}).r||{})[e.id];if(c[i]!==undefined){c[i]++;n++}});
+  return '<p style="font-weight:600;margin:14px 0 6px">'+esc(e.pergunta)+'</p>'+(e.opcoes||[]).map((o,i)=>{var pc=n?Math.round(c[i]/n*100):0;return '<div class="bar"><div class="t"><span>'+esc(o)+'</span><span>'+pc+'%</span></div><div class="tr"><div class="f" style="width:'+pc+'%"></div></div></div>'}).join("")+'<p class="note">'+n+' votos'+(e.aberta?'':' · encerrada')+'</p>'}).join("");
+ var rk=Object.keys(R).map(u=>[u,score(R[u])]).sort((a,b)=>b[1]-a[1]);
+ h+='<p style="font-weight:600;margin:18px 0 6px">Ranking do quiz</p>'+(rk.length?'<ol class="rank">'+rk.map((x,i)=>'<li class="'+(x[0]===uid?'me':'')+'"><span>'+(i+1)+'. '+esc(nm(x[0]))+'</span><span>'+x[1]+' pts</span></li>').join("")+'</ol>':'<p class="note">Ninguém concluiu o quiz ainda.</p>');
+ $("#results").innerHTML=h;loadNames(rk.map(x=>x[0]));
+}
+function paintForm(){
+ var d=I[uid],key=JSON.stringify(d||0)+editF+uid;if(key===lastForm)return;lastForm=key;
+ var b=$("#formBody");document.querySelectorAll(".prog i")[1].className=d?"on":"";
+ if(!uid){b.innerHTML='<p class="note center">Entre com sua conta do claude.ai para se inscrever.</p>';return}
+ if(d&&!editF){b.innerHTML='<div class="card"><p><b>Inscrição registrada ✅</b></p><p>'+esc(d.nome)+' · '+esc(d.email)+'<br>Vai participar: <b>'+esc(d.participa)+'</b>'+(d.restricao?'<br>Restrição alimentar: '+esc(d.restricao):'')+'</p><div class="rowb"><button class="btn ghost sm" id="fed">Editar</button><button class="btn ghost sm red" id="fdel">Cancelar inscrição</button></div></div>';return}
+ d=d||{};
+ b.innerHTML='<label class="l" for="em">E-mail *</label><input type="email" id="em" autocomplete="email"><label class="l" for="fn">Nome</label><input type="text" id="fn"><label class="l">Você vai participar do Evento UAU? *</label><label class="radio"><input type="radio" name="pp" value="Sim"> Sim</label><label class="radio"><input type="radio" name="pp" value="Não"> Não</label><label class="l" for="fr" style="margin-top:10px">Restrição alimentar</label><input type="text" id="fr"><p class="note" id="fmsg" role="alert"></p><button class="btn full" id="cont" style="margin-top:8px">'+(d.email?'Salvar alterações':'Continuar →')+'</button>';
+ $("#em").value=d.email||"";$("#fn").value=d.nome||myName;$("#fr").value=d.restricao||"";
+ if(d.participa)document.querySelector('input[name=pp][value="'+d.participa+'"]').checked=true;
+}
+function paintMural(){
+ var ids=Object.keys(F);
+ $("#mural").innerHTML=ids.map(u=>'<figure><img loading="lazy" src="/_blob/'+encodeURIComponent(F[u].aid)+'" alt="Foto de '+esc(nm(u))+'"><figcaption>'+esc(nm(u))+((u===uid||adm)?' <button class="btn ghost sm red" data-df="'+u+'">Excluir</button>':'')+'</figcaption></figure>').join("")||'<p class="note">Nenhuma foto no mural ainda. Seja a primeira pessoa!</p>';
+ loadNames(ids);
+}
+function paintAdmin(){
+ if(!adm)return;
+ var row=(t,a)=>'<div class="rowx"><span>'+t+'</span><span class="rowb" style="margin:0">'+a+'</span></div>',bt=(k,i,l,r)=>'<button class="btn ghost sm'+(r?' red':'')+'" data-'+k+'="'+i+'">'+l+'</button>';
+ $("#adE").innerHTML=E.map(e=>row((e.tipo==="votacao"?"🗳️ ":"📊 ")+esc(e.pergunta)+(e.aberta?'':' <i>(encerrada)</i>'),bt("et",e.id,e.aberta?"Encerrar":"Reabrir")+bt("ee",e.id,"Editar")+bt("ed",e.id,"Excluir",1))).join("")||'<p class="note">Nenhuma ainda.</p>';
+ $("#adQ").innerHTML=Q.map(q=>row(esc(q.pergunta),bt("ze",q.id,"Editar")+bt("zd",q.id,"Excluir",1))).join("")||'<p class="note">Nenhuma ainda.</p>';
+ var ks=Object.keys(I),sim=ks.filter(k=>I[k].participa==="Sim").length;
+ $("#adI").innerHTML='<p class="note">'+ks.length+' inscrições · '+sim+' confirmadas · '+(ks.length-sim)+' não vão</p>'+ks.map(k=>row(esc(I[k].nome)+' · '+esc(I[k].email)+' · <b>'+esc(I[k].participa)+'</b>'+(I[k].restricao?' · '+esc(I[k].restricao):''),bt("it",k,"Alternar")+bt("id",k,"Excluir",1))).join("");
+}
+function paintAll(){if(pend)return;pend=true;requestAnimationFrame(()=>{pend=false;paintPane();paintResults();paintForm();paintMural();paintAdmin()})}
+
+$("#pane").onclick=e=>{var t=e.target.closest("button");if(!t||!db||!uid)return;var d=t.dataset,id=t.id;
+ if(d.v){var r=Object.assign({},(V[uid]||{}).r);r[d.v]=+d.i;V[uid]={r:r};w(db.doc("votos/"+uid).set({r:r}))}
+ else if(id==="send"){var v=$("#qt").value.trim();if(!v){$("#msg").textContent="Escreva uma pergunta antes de enviar.";return}
+  var it=((P[uid]||{}).itens||[]).slice();
+  if(editQ)it=it.map(x=>x.id===editQ?Object.assign({},x,{t:v}):x);else it.push({id:rid(),t:v,ts:Date.now()});
+  P[uid]={itens:it};w(db.doc("perguntas/"+uid).set({itens:it}));editQ=null;$("#qt").value="";$("#msg").textContent=""}
+ else if(id==="cq"){editQ=null;$("#qt").value=""}
+ else if(d.eq){var x=((P[uid]||{}).itens||[]).find(y=>y.id===d.eq);if(x){editQ=x.id;$("#qt").value=x.t;$("#qt").focus()}}
+ else if(d.dq||d.rq){var pr=(d.dq||d.rq).split("|"),u=pr[0],itens=((P[u]||{}).itens||[]);
+  itens=d.dq?itens.filter(y=>y.id!==pr[1]):itens.map(y=>y.id===pr[1]?Object.assign({},y,{resp:true}):y);
+  w(itens.length?db.doc("perguntas/"+u).set({itens:itens}):db.doc("perguntas/"+u).delete())}
+ else if(d.up){var ids=((A[uid]||{}).ids||[]).slice(),k=ids.indexOf(d.up);k>-1?ids.splice(k,1):ids.push(d.up);A[uid]={ids:ids};w(db.doc("apoios/"+uid).set({ids:ids}))}
+ else if(d.qa){var r=Object.assign({},(R[uid]||{}).resp);r[d.qa]=+d.i;R[uid]={resp:r};qshow=d.qa;w(db.doc("respostas/"+uid).set({resp:r}))}
+ else if(id==="nq"){qshow=null}
+ else if(id==="redo"){delete R[uid];qshow=null;w(db.doc("respostas/"+uid).delete())}
+ paintAll();
+};
+$("#formBody").onclick=e=>{var t=e.target.closest("button");if(!t||!db||!uid)return;
+ if(t.id==="fed"){editF=true;paintAll()}
+ else if(t.id==="fdel"){w(db.doc("inscricoes/"+uid).delete())}
+ else if(t.id==="cont"){
+  var em=$("#em").value.trim(),pp=document.querySelector("input[name=pp]:checked");
+  if(!/^\S+@\S+\.\S+$/.test(em)||!pp){$("#fmsg").textContent="Informe um e-mail válido e escolha Sim ou Não.";return}
+  w(db.doc("inscricoes/"+uid).set({email:em,nome:$("#fn").value.trim(),participa:pp.value,restricao:$("#fr").value.trim(),ts:Date.now()}));editF=false}
+};
+$("#mural").onclick=e=>{var t=e.target.closest("button");if(!t||!db)return;var u=t.dataset.df,f=F[u];
+ w(db.doc("fotos/"+u).delete());if(f&&assets)assets.delete(f.aid).catch(()=>{})};
+$("#pub").onclick=async()=>{
+ if(!assets||!db||!uid||!lastC){$("#fnote").textContent="Entre com sua conta para publicar.";return}
+ var b=$("#pub");b.disabled=true;
+ try{var blob=await new Promise(r=>lastC.toBlob(r,"image/jpeg",.9)),old=F[uid],up=await assets.upload(blob);
+  await db.doc("fotos/"+uid).set({aid:up.id,ts:Date.now()});
+  if(old&&old.aid)assets.delete(old.aid).catch(()=>{});
+  $("#fnote").textContent="Publicada no mural! ✅";b.hidden=true;
+ }catch(err){$("#fnote").textContent="Não foi possível publicar: "+(err&&err.message||err)}
+ b.disabled=false;
+};
+function lines(id){return $(id).value.split("\n").map(x=>x.trim()).filter(Boolean)}
+function resetE(){editE=null;$("#eP").value="";$("#eO").value="";$("#eS").textContent="Criar";$("#eC").hidden=true}
+function resetZ(){editZ=null;$("#zP").value="";$("#zO").value="";$("#zA").value="";$("#zS").textContent="Criar";$("#zC").hidden=true}
+$("#p-admin").onclick=e=>{var t=e.target.closest("button");if(!t||!db||!adm)return;var d=t.dataset,id=t.id;
+ var fE=k=>E.find(x=>x.id===k),fQ=k=>Q.find(x=>x.id===k);
+ if(d.et){w(db.doc("enquetes/"+d.et).update({aberta:!fE(d.et).aberta}))}
+ else if(d.ee){var x=fE(d.ee);editE=x.id;$("#eT").value=x.tipo;$("#eP").value=x.pergunta;$("#eO").value=x.opcoes.join("\n");$("#eS").textContent="Salvar";$("#eC").hidden=false}
+ else if(d.ed){w(db.doc("enquetes/"+d.ed).delete())}
+ else if(d.ze){var q=fQ(d.ze);editZ=q.id;$("#zP").value=q.pergunta;$("#zO").value=q.opcoes.join("\n");$("#zA").value=q.a+1;$("#zS").textContent="Salvar";$("#zC").hidden=false}
+ else if(d.zd){w(db.doc("quiz/"+d.zd).delete())}
+ else if(d.it){w(db.doc("inscricoes/"+d.it).update({participa:I[d.it].participa==="Sim"?"Não":"Sim"}))}
+ else if(d.id){w(db.doc("inscricoes/"+d.id).delete())}
+ else if(id==="eC")resetE();else if(id==="zC")resetZ();
+ else if(id==="eS"){var o=lines("#eO"),q=$("#eP").value.trim();
+  if(!q||o.length<2){toast("Informe a pergunta e ao menos 2 opções.");return}
+  var n={tipo:$("#eT").value,pergunta:q,opcoes:o};
+  if(editE)w(db.doc("enquetes/"+editE).update(n));else{n.aberta=true;n.ordem=Date.now();w(db.collection("enquetes").add(n))}
+  resetE();toast("")}
+ else if(id==="zS"){var o=lines("#zO"),q=$("#zP").value.trim(),a=(+$("#zA").value)-1;
+  if(!q||o.length<2||!(a>=0&&a<o.length)){toast("Informe a pergunta, 2+ opções e o nº da correta.");return}
+  var n={pergunta:q,opcoes:o,a:a};
+  if(editZ)w(db.doc("quiz/"+editZ).update(n));else{n.ordem=Date.now();w(db.collection("quiz").add(n))}
+  resetZ();toast("")}
+};
+function frame(img){
+ var W=1080,H=1350,c=document.createElement("canvas");c.width=W;c.height=H;var x=c.getContext("2d");
+ var g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,"#B7E86F");g.addColorStop(1,"#74C228");x.fillStyle=g;x.fillRect(0,0,W,H);
+ var bx=60,by=250,bw=960,bh=900,r=Math.max(bw/img.width,bh/img.height),sw=bw/r,sh=bh/r;
+ x.save();x.beginPath();x.rect(bx,by,bw,bh);x.clip();x.drawImage(img,(img.width-sw)/2,(img.height-sh)/2,sw,sh,bx,by,bw,bh);x.restore();
+ x.lineWidth=14;x.strokeStyle="#fff";x.strokeRect(bx,by,bw,bh);
+ x.textAlign="center";x.textBaseline="middle";x.lineJoin="round";
+ x.font='150px "Titan One",Manrope,sans-serif';
+ x.fillStyle="#6E9A3C";x.fillText("UAU!",W/2+7,142+8);
+ x.lineWidth=18;x.strokeStyle="#3E5B2A";x.strokeText("UAU!",W/2,142);x.fillStyle="#fff";x.fillText("UAU!",W/2,142);
+ x.fillStyle="#1E3A0A";x.font='800 40px Manrope,sans-serif';x.fillText("Meu item da lojinha",W/2,1214);
+ var n=$("#nm").value.trim();
+ x.font='600 32px Manrope,sans-serif';x.fillText((n?n+" · ":"")+"Evento UAU 2026 · 17/11",W/2,1272);
+ lastC=c;return c.toDataURL("image/jpeg",.9);
+}
+function onPhoto(e){
+ var f=e.target.files&&e.target.files[0];if(!f)return;
+ var fr=new FileReader();
+ fr.onload=function(){var im=new Image();
+  im.onload=function(){
+   (document.fonts?document.fonts.load('150px "Titan One"'):Promise.resolve()).catch(function(){}).then(function(){
+    var s=$("#shot");s.src=frame(im);s.hidden=false;$("#pub").hidden=!(assets&&db&&uid);
+    $("#fnote").textContent="Pronto! Publique no mural ou toque e segure a imagem para salvar.";
+   });
+  };
+  im.onerror=function(){$("#fnote").textContent="Não consegui abrir essa imagem. Tente outra foto."};
+  im.src=fr.result;
+ };
+ fr.readAsDataURL(f);e.target.value="";
+}
+$("#cam").onchange=onPhoto;$("#gal").onchange=onPhoto;
+
+var sub=(ref,fn)=>ref.onSnapshot(fn,e=>console.error(e));
+var mapOf=s=>{var o={};s.docs.forEach(d=>o[d.id]=d.data());return o};
+var listOf=s=>s.docs.map(d=>Object.assign({id:d.id},d.data())).sort((a,b)=>(a.ordem||0)-(b.ordem||0));
+function start(){
+ $("#tabAdmin").hidden=!adm;
+ sub(db.collection("enquetes"),s=>{E=listOf(s);paintAll()});
+ sub(db.collection("quiz"),s=>{Q=listOf(s);paintAll()});
+ sub(db.collection("votos"),s=>{V=mapOf(s);paintAll()});
+ sub(db.collection("respostas"),s=>{R=mapOf(s);paintAll()});
+ sub(db.collection("perguntas"),s=>{P=mapOf(s);paintAll()});
+ sub(db.collection("apoios"),s=>{A=mapOf(s);paintAll()});
+ sub(db.collection("fotos"),s=>{F=mapOf(s);paintAll()});
+ if(adm)sub(db.collection("inscricoes"),s=>{I=mapOf(s);paintAll()});
+ else sub(db.doc("inscricoes/"+uid),d=>{I=d.exists?{[uid]:d.data()}:{};paintAll()});
+ usr.me().then(m=>{myName=m.name||"";lastForm="";paintAll()}).catch(()=>{});
+}
+function boot(){
+ if(!window.claude||!claude.use){$("#banner").textContent="Prévia sem banco de dados: abra pelo claude.ai para participar.";return}
+ Promise.all([claude.use("db"),claude.use("user"),claude.use("assets")]).then(r=>{
+  db=r[0];usr=r[1];assets=r[2];
+  if(!db||!usr){$("#banner").textContent="Entre com sua conta do claude.ai para votar e participar.";return}
+  return Promise.all([usr.id(),usr.canEdit()]).then(x=>{uid=x[0];adm=!!x[1];if(!uid){$("#banner").textContent="Sua conta não tem permissão para participar.";return}start()});
+ }).catch(e=>{$("#banner").textContent="Não foi possível conectar ao banco de dados."});
+}
+paintAll();boot();
+</script>
+</body>
+</html>
