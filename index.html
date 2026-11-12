@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>UAU! – Evento 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Titan+One&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="config.js"></script>
 <style>
 :root{--bg:#F8F9F6;--ink:#3A3F3A;--mute:#6B736B;--card:#fff;--line:#E3E8DE;--lime:#8FD94B;--lime2:#74C228;--tint:#EEF8D6;--link:#5E9E1C;--on:#1E3A0A;--h1:#DCEFA0;--h2:#F8F9F6;--st:#3E5B2A;--sh:#6E9A3C;--bad:#D14343;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10150D;--ink:#E4EBDD;--mute:#9AA693;--card:#182013;--line:#2B3724;--tint:#25331A;--link:#A6E566;--h1:#26361A;--h2:#10150D;--st:#0B1007;--sh:#4A6B25}}
@@ -80,6 +83,8 @@ input[type=text]{width:100%;background:var(--bg);border:1px solid var(--line);bo
 .sm{padding:3px 10px!important;font-size:13px}.btn.red{color:var(--bad);border-color:var(--bad)}
 select,input[type=number]{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:11px;margin-bottom:10px}
 .mural{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}.mural figure{margin:0}.mural img{width:100%;border-radius:8px;display:block}.mural figcaption{font-size:12px;color:var(--mute);margin-top:4px}
+.meet{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:linear-gradient(90deg,var(--lime),var(--lime2));color:var(--on);border-radius:10px;padding:16px 20px;margin-bottom:16px}
+.meet b{display:block;font-size:17px}.meet span{font-size:14px}.meet .note{color:inherit;margin:0}.meet .btn{background:var(--on);color:#fff}
 footer{text-align:center;color:var(--mute);font-size:12px;padding:16px 20px 32px}
 </style>
 </head>
@@ -119,6 +124,12 @@ footer{text-align:center;color:var(--mute);font-size:12px;padding:16px 20px 32px
 
 <section class="sec" id="info">
   <h2 class="t">Informações do evento</h2>
+  <div class="card" id="auth" hidden>
+    <div id="authIn"><p style="margin:0 0 8px"><b>Entre para participar</b> (votar, perguntar, se inscrever e postar fotos).</p>
+      <input type="email" id="lg" placeholder="seu e-mail" autocomplete="email" aria-label="Seu e-mail">
+      <button class="btn sm" id="lgb">Enviar link de acesso</button><p class="note" id="lgm" role="status"></p></div>
+    <div id="authOut" hidden><span id="who"></span> <button class="btn ghost sm" id="lgo">Sair</button></div>
+  </div>
   <div class="mtabs" role="tablist" id="mtabs">
     <button role="tab" aria-selected="true" data-m="online"><span class="live-dot"></span>Online</button>
     <button role="tab" aria-selected="false" data-m="prog">📅 Programação</button>
@@ -129,9 +140,10 @@ footer{text-align:center;color:var(--mute);font-size:12px;padding:16px 20px 32px
   </div>
 
   <div class="panel" id="p-online">
-    <div class="card">
-      <h3>📺 Transmissão ao vivo · 16/11, 15h às 18h</h3>
-      <div class="video"><div><b>Vídeo da transmissão</b>O player do YouTube, Vimeo ou Teams entra aqui.</div></div>
+    <div class="meet">
+      <div><b>📺 Transmissão ao vivo</b><span>16/11 · 15h às 18h</span></div>
+      <a class="btn" id="meetA" target="_blank" rel="noopener" hidden>Entrar no Google Meet</a>
+      <span class="note" id="meetN">O link será divulgado em breve.</span>
     </div>
     <div class="card">
       <h3>💬 Interaja</h3>
@@ -201,6 +213,14 @@ footer{text-align:center;color:var(--mute);font-size:12px;padding:16px 20px 32px
       <input type="text" id="zP" placeholder="Pergunta"><textarea id="zO" rows="3" placeholder="Uma opção por linha"></textarea>
       <input type="number" id="zA" min="1" placeholder="Nº da opção correta">
       <button class="btn sm" id="zS">Criar</button> <button class="btn ghost sm" id="zC" hidden>Cancelar</button></div>
+    <div class="card"><h3>📺 Link da transmissão (Google Meet)</h3>
+      <input type="text" id="mU" placeholder="https://meet.google.com/xxx-xxxx-xxx" aria-label="Link do Google Meet">
+      <button class="btn sm" id="mS">Salvar link</button> <button class="btn ghost sm" id="mC">Remover</button></div>
+    <div class="card"><h3>📥 Importar perguntas (planilha)</h3>
+      <p>Envie um arquivo .xlsx ou .csv com enquetes, votações e perguntas do quiz. <a href="modelo-perguntas.csv" download>Baixar modelo</a></p>
+      <input type="file" id="imF" accept=".csv,.xlsx,.xls" aria-label="Arquivo de perguntas">
+      <label class="radio"><input type="checkbox" id="imR"> Substituir as enquetes e o quiz existentes</label>
+      <div id="imP"></div><button class="btn sm" id="imG" hidden>Importar</button></div>
     <div class="card"><h3>📝 Inscrições</h3><div id="adI"></div></div>
     <p class="note" id="amsg" role="alert"></p>
   </div>
@@ -279,7 +299,7 @@ function paintForm(){
 }
 function paintMural(){
  var ids=Object.keys(F);
- $("#mural").innerHTML=ids.map(u=>'<figure><img loading="lazy" src="/_blob/'+encodeURIComponent(F[u].aid)+'" alt="Foto de '+esc(nm(u))+'"><figcaption>'+esc(nm(u))+((u===uid||adm)?' <button class="btn ghost sm red" data-df="'+u+'">Excluir</button>':'')+'</figcaption></figure>').join("")||'<p class="note">Nenhuma foto no mural ainda. Seja a primeira pessoa!</p>';
+ $("#mural").innerHTML=ids.map(u=>'<figure><img loading="lazy" src="'+blobUrl(F[u].aid)+'" alt="Foto de '+esc(nm(u))+'"><figcaption>'+esc(nm(u))+((u===uid||adm)?' <button class="btn ghost sm red" data-df="'+u+'">Excluir</button>':'')+'</figcaption></figure>').join("")||'<p class="note">Nenhuma foto no mural ainda. Seja a primeira pessoa!</p>';
  loadNames(ids);
 }
 function paintAdmin(){
@@ -390,6 +410,7 @@ var mapOf=s=>{var o={};s.docs.forEach(d=>o[d.id]=d.data());return o};
 var listOf=s=>s.docs.map(d=>Object.assign({id:d.id},d.data())).sort((a,b)=>(a.ordem||0)-(b.ordem||0));
 function start(){
  $("#tabAdmin").hidden=!adm;
+ sub(db.doc("config/geral"),d=>{var u=d.exists?d.data().meetUrl:"";setMeet(u||cfgMeet());if(document.activeElement!==$("#mU"))$("#mU").value=u||""});
  sub(db.collection("enquetes"),s=>{E=listOf(s);paintAll()});
  sub(db.collection("quiz"),s=>{Q=listOf(s);paintAll()});
  sub(db.collection("votos"),s=>{V=mapOf(s);paintAll()});
@@ -401,15 +422,85 @@ function start(){
  else sub(db.doc("inscricoes/"+uid),d=>{I=d.exists?{[uid]:d.data()}:{};paintAll()});
  usr.me().then(m=>{myName=m.name||"";lastForm="";paintAll()}).catch(()=>{});
 }
-function boot(){
- if(!window.claude||!claude.use){$("#banner").textContent="Prévia sem banco de dados: abra pelo claude.ai para participar.";return}
- Promise.all([claude.use("db"),claude.use("user"),claude.use("assets")]).then(r=>{
-  db=r[0];usr=r[1];assets=r[2];
-  if(!db||!usr){$("#banner").textContent="Entre com sua conta do claude.ai para votar e participar.";return}
-  return Promise.all([usr.id(),usr.canEdit()]).then(x=>{uid=x[0];adm=!!x[1];if(!uid){$("#banner").textContent="Sua conta não tem permissão para participar.";return}start()});
- }).catch(e=>{$("#banner").textContent="Não foi possível conectar ao banco de dados."});
+var imRows=[];
+var norm=s=>String(s==null?"":s).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]/g,"");
+function parseRows(rows){var ok=[],bad=[];
+ rows.forEach((r,n)=>{var k={};Object.keys(r).forEach(h=>k[norm(h)]=String(r[h]).trim());
+  var q=k.pergunta||k.questao||"";if(!q&&!Object.keys(k).some(h=>k[h]))return;
+  var num=h=>parseInt(h.replace(/\D/g,"")),
+   o=Object.keys(k).filter(h=>/^(opcao|alternativa|resposta)\d+$/.test(h)).sort((a,b)=>num(a)-num(b)).map(h=>k[h]).filter(Boolean),
+   c=k.correta||k.gabarito||k.respostacorreta||k.resposta||"",t=norm(k.tipo);
+  t=t.indexOf("vota")===0?"votacao":t.indexOf("enq")===0?"enquete":t.indexOf("quiz")===0?"quiz":(c?"quiz":"enquete");
+  var a=-1;if(c)a=/^\d+$/.test(c)?+c-1:/^[a-f]$/i.test(c)?c.toUpperCase().charCodeAt(0)-65:o.findIndex(x=>norm(x)===norm(c));
+  var err=!q?"sem pergunta":o.length<2?"menos de 2 opções":(t==="quiz"&&!(a>=0&&a<o.length))?"resposta correta inválida":"";
+  err?bad.push("Linha "+(n+2)+": "+err):ok.push({t:t,q:q,o:o,a:a,id:(k.id||"").replace(/[^\w-]/g,""),ab:!/^(nao|n|0|false)$/.test(norm(k.aberta||"sim"))})});
+ return{ok:ok,bad:bad}}
+$("#imF").onchange=async e=>{var f=e.target.files[0];if(!f)return;
+ try{var wb=/\.csv$/i.test(f.name)?XLSX.read(await f.text(),{type:"string"}):XLSX.read(await f.arrayBuffer(),{type:"array"});
+  var r=parseRows(XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{defval:""}));imRows=r.ok;
+  var c=x=>imRows.filter(y=>y.t===x).length;
+  $("#imP").innerHTML='<p class="note">'+c("enquete")+' enquetes · '+c("votacao")+' votações · '+c("quiz")+' perguntas de quiz'+(r.bad.length?' · <b>'+r.bad.length+' linha(s) com problema:</b><br>'+r.bad.slice(0,8).map(esc).join("<br>"):"")+'</p>';
+  $("#imG").hidden=!imRows.length;
+ }catch(err){$("#imP").innerHTML='<p class="note">Não consegui ler o arquivo: '+esc(err.message)+'</p>';$("#imG").hidden=true}};
+$("#imG").onclick=async()=>{if(!db||!adm||!imRows.length)return;var b=$("#imG");b.disabled=true;
+ try{if($("#imR").checked){for(var x of E)await db.doc("enquetes/"+x.id).delete();for(var y of Q)await db.doc("quiz/"+y.id).delete()}
+  var t0=Date.now();
+  for(var i=0;i<imRows.length;i++){var r=imRows[i];
+   var cn=r.t==="quiz"?"quiz":"enquetes",d=r.t==="quiz"?{pergunta:r.q,opcoes:r.o,a:r.a,ordem:t0+i}:{tipo:r.t,pergunta:r.q,opcoes:r.o,aberta:r.ab,ordem:t0+i};
+   if(r.id)await db.doc(cn+"/"+r.id).set(d);else await db.collection(cn).add(d)}
+  $("#imP").innerHTML='<p class="note">✅ '+imRows.length+' itens importados.</p>';imRows=[];b.hidden=true;$("#imF").value="";
+ }catch(err){$("#imP").innerHTML='<p class="note">Erro ao importar: '+esc(err.message||err)+'</p>'}
+ b.disabled=false};
+var MEET=/^https:\/\/(meet\.google\.com|g\.co\/meet)\//,cfgMeet=()=>((window.UAU_CONFIG||{}).meetUrl||"").trim();
+function setMeet(u){u=(u||"").trim();var ok=MEET.test(u),a=$("#meetA");a.hidden=!ok;$("#meetN").hidden=ok;if(ok)a.href=u}
+$("#mS").onclick=()=>{var u=$("#mU").value.trim();if(!MEET.test(u)){toast("Cole um link do Google Meet (https://meet.google.com/...).");return}
+ if(db&&adm){w(db.doc("config/geral").set({meetUrl:u}));toast("Link salvo.")}};
+$("#mC").onclick=()=>{if(db&&adm){w(db.doc("config/geral").delete());$("#mU").value="";toast("Link removido.")}};
+var sb;
+var nameOf=e=>(e||"").split("@")[0].replace(/[._-]+/g," ").replace(/\b\w/g,c=>c.toUpperCase());
+var blobUrl=p=>sb.storage.from("fotos").getPublicUrl(p).data.publicUrl;
+function makeDb(){
+ var T="docs",snap=(id,r)=>({id:id,exists:!!r,data:()=>r?r.data:undefined});
+ function live(col,load,er){var run=()=>load().catch(er||console.error);run();
+  var ch=sb.channel("c_"+col+rid()).on("postgres_changes",{event:"*",schema:"public",table:T,filter:"col=eq."+col},run).subscribe();
+  return()=>sb.removeChannel(ch)}
+ var chk=r=>{if(r.error)throw r.error};
+ var ref=(col,id)=>({
+  get:async()=>{var r=await sb.from(T).select("data").eq("col",col).eq("id",id).maybeSingle();chk(r);return snap(id,r.data)},
+  set:async d=>chk(await sb.from(T).upsert({col:col,id:id,data:d,owner:uid})),
+  update:async d=>{var c=await ref(col,id).get();chk(await sb.from(T).upsert({col:col,id:id,data:Object.assign({},c.data(),d),owner:uid}))},
+  delete:async()=>chk(await sb.from(T).delete().eq("col",col).eq("id",id)),
+  onSnapshot:(fn,er)=>live(col,async()=>fn(await ref(col,id).get()),er)});
+ var coll=col=>({
+  add:async d=>{var id=rid();chk(await sb.from(T).insert({col:col,id:id,data:d,owner:uid}));return ref(col,id)},
+  onSnapshot:(fn,er)=>live(col,async()=>{var r=await sb.from(T).select("id,data").eq("col",col);chk(r);fn({docs:r.data.map(x=>snap(x.id,x))})},er)});
+ return{doc:p=>{var a=p.split("/");return ref(a[0],a[1])},collection:coll};
 }
-paintAll();boot();
+var makeUser=()=>({id:async()=>uid,canEdit:async()=>adm,me:async()=>({name:myName}),
+ profiles:async ids=>{var r=await sb.from("docs").select("id,data").eq("col","perfis").in("id",ids),o={};(r.data||[]).forEach(x=>o[x.id]=x.data);return o}});
+var makeAssets=()=>({
+ upload:async b=>{var p=uid+"/"+Date.now()+".jpg",r=await sb.storage.from("fotos").upload(p,b,{contentType:"image/jpeg"});if(r.error)throw r.error;return{id:p}},
+ delete:async p=>{await sb.storage.from("fotos").remove([p])}});
+function showAuth(se){$("#auth").hidden=false;$("#authIn").hidden=!!se;$("#authOut").hidden=!se;if(se)$("#who").textContent="Conectado: "+se.user.email}
+$("#lgb").onclick=async()=>{var em=$("#lg").value.trim();
+ if(!/^\S+@\S+\.\S+$/.test(em)){$("#lgm").textContent="Informe um e-mail válido.";return}
+ var r=await sb.auth.signInWithOtp({email:em,options:{emailRedirectTo:location.origin+location.pathname}});
+ $("#lgm").textContent=r.error?"Erro: "+r.error.message:"Enviamos um link para o seu e-mail. Abra-o neste aparelho."};
+$("#lgo").onclick=async()=>{await sb.auth.signOut();location.reload()};
+async function init(se){
+ if(uid)return;uid=se.user.id;showAuth(se);myName=nameOf(se.user.email);
+ db=makeDb();usr=makeUser();assets=makeAssets();
+ var r=await sb.rpc("is_admin");adm=!!r.data;
+ await db.doc("perfis/"+uid).set({name:myName}).catch(()=>{});
+ start();
+}
+function boot(){var c=window.UAU_CONFIG;
+ if(!c||!c.url||c.url.indexOf("COLE")>-1||!window.supabase){$("#banner").textContent="Falta configurar o Supabase em config.js (veja o README).";return}
+ sb=supabase.createClient(c.url,c.anon);
+ sb.auth.onAuthStateChange((ev,se)=>{if(se)init(se)});
+ sb.auth.getSession().then(r=>{if(r.data.session)init(r.data.session);else showAuth(null)});
+}
+setMeet(cfgMeet());paintAll();boot();
 </script>
 </body>
 </html>
